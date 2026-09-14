@@ -1,7 +1,7 @@
 package com.yago.estoque.service;
 
 import com.yago.estoque.entity.Product;
-import com.yago.estoque.exception.ResourceNotFoundExecption;
+import com.yago.estoque.exception.ResourceNotFoundException;
 import com.yago.estoque.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class ProductService {
     }
 
     public Product findById(long id){
-        return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundExecption("Produto não encontrado com o id: " + id));
+        return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado com o id: " + id));
     }
 
     public Product update(Long id, Product productData){
